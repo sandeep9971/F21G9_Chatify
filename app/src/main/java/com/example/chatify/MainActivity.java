@@ -10,6 +10,8 @@ import android.os.Handler;
 import static com.example.chatify.Constant.IsLoggedIn;
 import static com.example.chatify.Constant.MyPref;
 
+import com.Inbox;
+
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     String uid;
@@ -29,15 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     uid = sharedPreferences.getString("uid","");
-                   // new FetchInbox(uid,SplashActivity.this);
-                   // FirebaseDatabase.getInstance().getReference("users").child(uid).child("online_status").setValue("online");
+
                     Intent intent = new Intent(MainActivity.this, Inbox.class);
                     startActivity(intent);
                     finish();
 
                 }
             }
-        }, 1000);
+        }, 3000);
 
     }
 }

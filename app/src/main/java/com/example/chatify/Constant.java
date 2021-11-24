@@ -4,10 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-/**
- * Created by dev on 12/3/18.
- */
-
 public class Constant {
     public static final String MyPref="Pref";
     public static final String IsLoggedIn="islog";
@@ -20,7 +16,7 @@ public class Constant {
     public static final int CAMERA_REQUEST_CODE=1;
     public static final int REQUEST_CAMERA=200;
     public static final int READ_EXTERNAL_STORAGE=300;
-//    public static ArrayList<InboxModel> inboxModelArrayList=new ArrayList<>();
+
     public static final int LoginUserMsgsend=0;
     public static final int SecondUserMsgSend=1;
     public static final String Token="token";
@@ -65,9 +61,6 @@ public class Constant {
         ConnectivityManager connMgr = (ConnectivityManager) thisActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
-        if (activeInfo != null && activeInfo.isConnected()) {
-            return true;
-        }
-        return false;
+        return activeInfo != null && activeInfo.isConnected();
     }
 }
