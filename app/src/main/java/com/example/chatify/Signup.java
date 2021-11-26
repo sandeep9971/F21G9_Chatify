@@ -126,8 +126,8 @@ public class Signup extends AppCompatActivity {
             Toast.makeText(Signup.this, "Please fill the name ", Toast.LENGTH_LONG).show();
         } else if (TextUtils.isEmpty(email) || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(Signup.this, "Please Check the email", Toast.LENGTH_LONG).show();
-        } else if (TextUtils.isEmpty(password) || password.length() != 8) {
-            Toast.makeText(Signup.this, " Password must be alphanumeric and contain one special Symbol", Toast.LENGTH_LONG).show();
+        } else if (TextUtils.isEmpty(password) )//|| password.length() != 8) {
+        {Toast.makeText(Signup.this, " Password must be alphanumeric and contain one special Symbol", Toast.LENGTH_LONG).show();
         } else if (!password.equalsIgnoreCase(conpswd)) {
             Toast.makeText(Signup.this, "Confirm password must be same", Toast.LENGTH_LONG).show();
 

@@ -65,8 +65,6 @@ public class SignUpModel {
         this.platform = platform;
     }
 
-
-
     public String getUid() {
         return uid;
     }

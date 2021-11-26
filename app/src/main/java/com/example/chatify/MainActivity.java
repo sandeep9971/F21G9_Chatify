@@ -10,7 +10,7 @@ import android.os.Handler;
 import static com.example.chatify.Constant.IsLoggedIn;
 import static com.example.chatify.Constant.MyPref;
 
-import com.Inbox;
+
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     uid = sharedPreferences.getString("uid","");
 
-                    Intent intent = new Intent(MainActivity.this, Inbox.class);
+                    Intent intent = new Intent(MainActivity.this, inbox.class);
                     startActivity(intent);
                     finish();
 

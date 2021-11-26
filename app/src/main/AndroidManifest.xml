@@ -17,8 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
         <activity
-            android:name="com.Inbox"
-            android:exported="true" />
+            android:name=".inbox"
+            android:exported="false" />
+
         <activity android:name=".Signup" />
         <activity android:name=".LoginActivity" />
         <activity
@@ -26,12 +27,11 @@
             android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
 
-    </intent-filter>
-
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

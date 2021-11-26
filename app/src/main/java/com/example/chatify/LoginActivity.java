@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.Inbox;
+
 import com.example.chatify.models.SignUpModel;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putBoolean(IsLoggedIn, true);
                                             editor.commit();
 
-                                            Intent i = new Intent(LoginActivity.this, Inbox.class);
+                                            Intent i = new Intent(LoginActivity.this, inbox.class);
                                             startActivity(i);
                                             finish();
                                             progressBar.setVisibility(View.GONE);
