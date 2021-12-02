@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/inbox_index_img"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/user_inbox_name"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toEndOf="@id/inbox_index_img"
+            android:layout_toRightOf="@id/inbox_index_img"
+            android:textSize="18sp"
+            android:textColor="#FF9800"
+            android:textStyle="bold"
+            android:typeface="serif" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+android:layout_marginRight="20dp"
+            android:textColor="#E9EDEF"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:textSize="10dp"
+            android:id="@+id/tv_time"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_time"
+            android:layout_alignParentRight="true"
+            android:id="@+id/tv_unreadcount"
+            android:layout_marginTop="2dp"
+android:gravity="center"
+           android:background="@drawable/circular_textview"
+            android:layout_marginRight="30dp"
+            android:text=""/>
+
+
+        <TextView
+            android:id="@+id/textmsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_inbox_name"
+            android:layout_marginLeft="18dp"
+            android:layout_toEndOf="@id/inbox_index_img"
+            android:layout_toRightOf="@id/inbox_index_img"
+            android:maxLines="1"
+            android:maxWidth="20dp"
+            android:paddingRight="30dp"
+            android:singleLine="true"
+            android:textSize="15dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/textmsg"
+
+            android:layout_marginTop="4dp"
+            android:background="#B3E5FC" />
+
+    </RelativeLayout>
+
+</LinearLayout>

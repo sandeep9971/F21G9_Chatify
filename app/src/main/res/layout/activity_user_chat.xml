@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+android:background="@drawable/wp4410714"
+    android:id="@+id/rl_parent"
+    tools:context="com.example.chatify.UserChat">
+
+    <RelativeLayout
+        android:id="@+id/rltitle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#070707">
+
+        <ImageView
+            android:id="@+id/imgback"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/tvuser_msg_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@+id/imgback"
+            android:layout_toRightOf="@+id/imgback"
+            android:textColor="#03A9F4"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/setting"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_baseline_more_vert_24"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rltitle"
+        android:layout_above="@+id/rlmsgsend">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/msg_recycle" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#dcd9d9"
+        android:id="@+id/rlmsgsend"
+
+        >
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ed_msgsend"
+    android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+          android:layout_marginBottom="5dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_toLeftOf="@+id/btn_msg_send"
+            android:background="#fdfbfb"
+            android:textColor="#1F2020"
+            android:textColorHint="#8A8888"
+            android:textSize="15sp"
+            android:hint="Type a message..."
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/btn_msg_send"
+            android:src="@drawable/ic_baseline_send_24"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

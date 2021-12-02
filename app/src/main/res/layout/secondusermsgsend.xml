@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_bg_receive"
+        android:layout_marginRight="100dp"
+
+        android:id="@+id/linear11">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+      android:padding="8dp"
+        android:layout_marginLeft="2dp"
+        android:layout_centerVertical="true"
+        android:textSize="15sp"
+        android:textColor="#000000"
+        android:id="@+id/tv_seconduser_msg"
+
+        android:autoLink="web"
+/>
+   </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/receivetime"
+        android:layout_below="@id/linear11"
+        android:textSize="8sp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="1dp"
+
+        android:layout_alignParentLeft="true"/>
+
+</RelativeLayout>

@@ -1,7 +1,5 @@
 package com.example.chatify;
 
-import static com.example.chatify.Constant.MyPref;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,126 +10,118 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 
+import com.example.chatify.fragments.Frgment_Inbox;
 import com.example.chatify.fragments.ProfileFragment;
+import com.example.chatify.fragments.User;
+import com.example.chatify.localDB.DBHandler;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class inbox extends AppCompatActivity {
+import static com.example.chatify.Constant.MyPref;
 
-    public Button logout;
+public class Inbox extends AppCompatActivity {
+
+    public ImageView menu;
     TabLayout tbInbox;
     ViewPager viewPager;
     public SharedPreferences sharedPreferences;
     DBHandler db;
     String uid, token;
 ProfileFragment profileFragment;
-
+    User userFragmnt;
+    Frgment_Inbox frgmentInbox;
+    public EditText edSearch;
+    public RelativeLayout linearLayoutSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inbox);
-
         setUpViews();
 
         sharedPreferences = getSharedPreferences(MyPref, MODE_PRIVATE);
         uid = sharedPreferences.getString("uid", "");
-
-        FirebaseDatabase.getInstance().getReference("users").child(uid).child("token").setValue(token);
-
-
-        db = new DBHandler(inbox.this);
+   db = new DBHandler(Inbox.this);
         addTabs(viewPager);
         tbInbox.setupWithViewPager(viewPager);
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
     }
 
     private void setUpViews() {
 
 
         tbInbox = findViewById(R.id.tab_inbox);
-        logout = findViewById(R.id.btnLOGOUT);
+        menu = findViewById(R.id.menu);
         viewPager = findViewById(R.id.view_pager);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        menu.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-
-
-                sharedPreferences = getSharedPreferences(MyPref, MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.clear().commit();
-                db.deleteAll();
-                Intent intent = new Intent(inbox.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-
+                final PopupMenu popupMenu = new PopupMenu(Inbox.this, menu);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                                                         public boolean onMenuItemClick(MenuItem item) {
+                                                             switch (item.getItemId()) {
+                                                                 case R.id.log_out:
+                                                                     SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                                     editor.clear().commit();
+                                                                     db.deleteAll();
+                                                                     Intent intent = new Intent(Inbox.this, LoginActivity.class);
+                                                                     startActivity(intent);
+                                                                     finish();
+                                                                     return true;
+                                                             }
+                                                             return true;
+                                                         }
+                                                     }
+                );
+                popupMenu.inflate(R.menu.mainmenu);
+                popupMenu.show();
             }
         });
 
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 2) {
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) { }
+        });
 
 
-     viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-        @Override
-        public void onPageSelected(int position) {
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) { }
-    });
-}
+    }
 
     private void addTabs(ViewPager viewPager) {
         adptr ad = new adptr(getSupportFragmentManager());
-        profileFragment = new ProfileFragment();
-        ad.addTabs(profileFragment, "Profile");
+      profileFragment = new ProfileFragment();
+        userFragmnt = new User();
+        frgmentInbox = new Frgment_Inbox();
+        ad.addTabs(frgmentInbox, "Inbox");
+        ad.addTabs(userFragmnt, "Contacts");
+   ad.addTabs(profileFragment, "Profile");
         viewPager.setAdapter(ad);
 
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        FirebaseDatabase.getInstance().getReference("users").child(uid).child("online_status").setValue("online");
-
-    }
-
-    @Override
-    protected void onUserLeaveHint() {
-        super.onUserLeaveHint();
-        FirebaseDatabase.getInstance().getReference("users").child(uid).child("online_status").setValue("");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        FirebaseDatabase.getInstance().getReference("users").child(uid).child("online_status").setValue("");
-        Log.e("destroy", "0000");
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }
 
 class adptr extends FragmentPagerAdapter {
@@ -161,5 +151,4 @@ class adptr extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return str.get(position);
     }
-
 }

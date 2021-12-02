@@ -3,6 +3,7 @@ package com.example.chatify.models;
 import androidx.annotation.NonNull;
 
 
+
 public class InboxModel implements Comparable<InboxModel> {
     String lastMsg,oppName,oppUid,oppImg,chatRoom,tokenId,typingStatus;
     long inboxtime,unread_count;
@@ -12,7 +13,7 @@ public class InboxModel implements Comparable<InboxModel> {
 
 
 
-    public InboxModel(String lastMsg, String oppImg, String oppName, String oppUid, String chatRoom, String tokenId,String typingStatus, long unread_count,long inboxtime) {
+    public InboxModel(String lastMsg, String oppImg, String oppName, String oppUid, String chatRoom,  long unread_count,long inboxtime) {
         this.lastMsg = lastMsg;
         this.oppName = oppName;
         this.oppUid = oppUid;
@@ -20,8 +21,7 @@ public class InboxModel implements Comparable<InboxModel> {
         this.chatRoom=chatRoom;
 this.unread_count=unread_count;
         this.inboxtime = inboxtime;
-        this.typingStatus=typingStatus;
-        this.tokenId=tokenId;
+
 
     }
 

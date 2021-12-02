@@ -3,27 +3,28 @@ package com.example.chatify.models;
 
 
 public class SignUpModel {
-    String name,email,platform,phone,uid,status,online_status;
+    String name,email,imgUrl,platform,token,phone,uid,status;
     public SignUpModel(){}
-    public SignUpModel(String name, String email, String phone, String platform, String uid,String status,String online_status) {
+    public SignUpModel(String name, String email, String phone, String platform, String token, String uid, String imgUrl,String status) {
         this.name = name;
         this.email = email;
+        this.imgUrl=imgUrl;
         this.platform = platform;
-
+        this.token = token;
         this.uid = uid;
         this.status=status;
-        this.online_status=online_status;
+
 
         this.phone=phone;
     }
-
-    public String getOnline_status() {
-        return online_status;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setOnline_status(String online_status) {
-        this.online_status = online_status;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
+
 
     public String getStatus() {
         return status;
@@ -63,6 +64,14 @@ public class SignUpModel {
 
     public void setPlatform(String platform) {
         this.platform = platform;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getUid() {

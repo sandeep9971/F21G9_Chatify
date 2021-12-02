@@ -17,9 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.example.chatify.models.SignUpModel;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -32,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static com.example.chatify.Constant.Email;
-import static com.example.chatify.Constant.ImageUrl;
 import static com.example.chatify.Constant.IsLoggedIn;
 import static com.example.chatify.Constant.MyPref;
 import static com.example.chatify.Constant.NAME;
@@ -65,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         databaseUsers = FirebaseDatabase.getInstance().getReference("users");
 
-
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 loginAuthFirebase();
             }
         });
@@ -112,19 +109,12 @@ public class LoginActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+
                                 databaseUsers.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
                                         if (dataSnapshot != null) {
 
-
-                                            if (!TextUtils.isEmpty(token)){
-                                                FirebaseDatabase.getInstance().getReference().child("users").child(uid).
-                                                        child("token").setValue(token);
-                                                Log.e("Login","Token :::::" +token);
-                                                FirebaseDatabase.getInstance().getReference("users").child(uid).child("online_status").setValue("online");
-
-                                            }
                                             SignUpModel model = dataSnapshot.getValue(SignUpModel.class);
                                             SharedPreferences sharedPreferences = getSharedPreferences(MyPref, MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -138,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putBoolean(IsLoggedIn, true);
                                             editor.commit();
 
-                                            Intent i = new Intent(LoginActivity.this, inbox.class);
+                                            Intent i = new Intent(LoginActivity.this, Inbox.class);
                                             startActivity(i);
                                             finish();
                                             progressBar.setVisibility(View.GONE);
@@ -153,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                             } else {
                                 progressBar.setVisibility(View.GONE);
                                 isLoading = false;
-                                Log.e("noo", "signInWithEmail:failure", task.getException());
+                                Log.e("nooooo", "signInWithEmail:failure", task.getException());
                                 Toast.makeText(LoginActivity.this, "Authentication failed." + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
 

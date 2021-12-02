@@ -130,10 +130,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="#FF9800"
-            android:text="SignIn"
-            android:textSize="18sp"
+            android:text="Register"
+            android:textAllCaps="false"
             android:textColor="#ffffff"
-            android:textAllCaps="false" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
